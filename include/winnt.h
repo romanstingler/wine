@@ -686,7 +686,8 @@ typedef DWORD FLONG;
 #define PROCESSOR_OPTIL          18767
 
 #ifdef _WIN64
-#define MAXIMUM_PROCESSORS       64
+#define MAXIMUM_PROC_PER_GROUP   64
+#define MAXIMUM_PROCESSORS       MAXIMUM_PROC_PER_GROUP
 #else
 #define MAXIMUM_PROCESSORS       32
 #endif

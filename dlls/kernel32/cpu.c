@@ -176,7 +176,7 @@ VOID WINAPI GetNativeSystemInfo(
 {
     BOOL is_wow64;
 
-    GetSystemInfo(si); 
+    GetSystemInfo(si);
 
     IsWow64Process(GetCurrentProcess(), &is_wow64);
     if (is_wow64)
@@ -334,6 +334,21 @@ DWORD WINAPI GetMaximumProcessorCount(WORD group)
 
     FIXME("semi-stub, returning %u\n", cpus);
     return cpus;
+}
+
+/***********************************************************************
+ *           GetMaximumProcessorGroupCount (KERNEL32.@)
+ */
+DWORD WINAPI GetMaximumProcessorGroupCount()
+{
+    SYSTEM_INFO si;
+    DWORD cpus;
+
+    GetSystemInfo( &si );
+    cpus = si.dwNumberOfProcessors;
+
+    FIXME("semi-stub, returning %u\n", ((cpus-1)/64) + 1);
+    return ((cpus-1)/64) + 1;
 }
 
 /***********************************************************************
