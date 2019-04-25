@@ -2604,6 +2604,21 @@ KAFFINITY WINAPI KeQueryActiveProcessors( void )
     return AffinityMask;
 }
 
+/**********************************************************************
+ *           KeQueryActiveGroupCount   (NTOSKRNL.EXE.@)
+ *
+ * Return the active Processors as bitmask
+ *
+ * RETURNS
+ *   returns a count of the active groups
+ *
+ */
+USHORT KeQueryActiveProcessors( void )
+{
+        FIXME("(%u)\n",1);
+        return 1;
+}
+
 
 /**********************************************************************
  *           KeQueryInterruptTime   (NTOSKRNL.EXE.@)
