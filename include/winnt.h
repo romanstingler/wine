@@ -6096,6 +6096,8 @@ typedef enum _LOGICAL_PROCESSOR_RELATIONSHIP
 
 #define LTP_PC_SMT 0x1
 
+#define ALL_PROCESSOR_GROUPS  0xffff
+
 typedef enum _PROCESSOR_CACHE_TYPE
 {
     CacheUnified,

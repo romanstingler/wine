@@ -1590,6 +1590,8 @@ void      WINAPI KeInitializeSpinLock(KSPIN_LOCK*);
 void      WINAPI KeInitializeTimerEx(PKTIMER,TIMER_TYPE);
 void      WINAPI KeInitializeTimer(KTIMER*);
 void      WINAPI KeLeaveCriticalRegion(void);
+ULONG     WINAPI KeQueryMaximumProcessorCount(void);
+ULONG     WINAPI KeQueryMaximumProcessorCountEx(USHORT);
 void      WINAPI KeQuerySystemTime(LARGE_INTEGER*);
 void      WINAPI KeQueryTickCount(LARGE_INTEGER*);
 ULONG     WINAPI KeQueryTimeIncrement(void);

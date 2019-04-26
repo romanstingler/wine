@@ -302,8 +302,12 @@ SIZE_T WINAPI GetLargePageMinimum(void)
  */
 WORD WINAPI GetActiveProcessorGroupCount(void)
 {
-    FIXME("semi-stub, always returning 1\n");
-    return 1;
+    DWORD activeProcessorCount = GetActiveProcessorCount();
+    if(apgc){
+        FIXME("semi-stub, always returning 1\n");
+        return 1;
+    }
+    return 0;
 }
 
 /***********************************************************************

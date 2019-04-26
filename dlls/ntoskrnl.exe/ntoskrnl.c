@@ -2621,6 +2621,53 @@ USHORT KeQueryActiveProcessors( void )
 
 
 /**********************************************************************
+ *           KeQueryMaximumProcessorCount   (NTOSKRNL.EXE.@)
+ *
+ *
+ * RETURNS
+ *   the maximum number of processors
+ *
+ */
+ULONG WINAPI KeQueryMaximumProcessorCount(void);
+{
+    return KeQueryMaximumProcessorCountEx(0);
+}
+
+
+/**********************************************************************
+ *           KeQueryMaximumProcessorCountEx   (NTOSKRNL.EXE.@)
+ *
+ *
+ * RETURNS
+ *   the maximum number of processors
+ *
+ */
+ULONG WINAPI KeQueryMaximumProcessorCount(USHORT GroupNumber);
+{
+    FIXME();
+
+
+    return KeQueryMaximumProcessorCountEx(0);
+}
+
+
+/**********************************************************************
+ *           KeQueryMaximumGroupCount   (NTOSKRNL.EXE.@)
+ *
+ *
+ * RETURNS
+ *   the maximum number of processors
+ *
+ */
+ULONG WINAPI KeQueryMaximumGroupCount();
+{
+
+
+
+return KeQueryMaximumProcessorCountEx(0);
+}
+
+/**********************************************************************
  *           KeQueryInterruptTime   (NTOSKRNL.EXE.@)
  *
  * Return the interrupt time count

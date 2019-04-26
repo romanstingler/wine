@@ -23,6 +23,8 @@
 extern "C" {
 #endif
 
+#define ALL_PROCESSOR_GROUPS  0xffff
+
 typedef enum _EVENT_TYPE {
     NotificationEvent,
     SynchronizationEvent
