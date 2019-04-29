@@ -2628,9 +2628,9 @@ USHORT KeQueryActiveProcessors( void )
  *   the maximum number of processors
  *
  */
-ULONG WINAPI KeQueryMaximumProcessorCount(void);
+ULONG WINAPI KeQueryMaximumProcessorCount(void)
 {
-    return KeQueryMaximumProcessorCountEx(0);
+    return MAXIMUM_PROCESSORS;
 }
 
 
@@ -2639,33 +2639,58 @@ ULONG WINAPI KeQueryMaximumProcessorCount(void);
  *
  *
  * RETURNS
- *   the maximum number of processors
+ *   the maximum number of logical processors in a specified group in a multiprocessor system
  *
  */
-ULONG WINAPI KeQueryMaximumProcessorCount(USHORT GroupNumber);
+ULONG WINAPI KeQueryMaximumProcessorCount(USHORT GroupNumber)
 {
-    FIXME();
-
-
-    return KeQueryMaximumProcessorCountEx(0);
+    return GetMaximumProcessorCount(GroupNumber);
 }
 
 
 /**********************************************************************
- *           KeQueryMaximumGroupCount   (NTOSKRNL.EXE.@)
+ *           KeQueryMaximumProcessorCountEx   (NTOSKRNL.EXE.@)
  *
  *
  * RETURNS
- *   the maximum number of processors
+ *   the highest node number in a multiprocessor system that has a non-uniform memory access (NUMA) architecture.
  *
  */
-ULONG WINAPI KeQueryMaximumGroupCount();
+USHORT WINAPI KeQueryHighestNodeNumber()
 {
-
-
-
-return KeQueryMaximumProcessorCountEx(0);
+    return GetMaximumProcessorCount(GroupNumber);
 }
+
+
+///**********************************************************************
+// *           KeQueryMaximumProcessorCountEx   (NTOSKRNL.EXE.@)
+// *
+// *
+// * RETURNS
+// *   the maximum number of logical processors in a specified group in a multiprocessor system
+// *
+// */
+//ULONG     WINAPI KeGetCurrentProcessorNumberEx(PPROCESSOR_NUMBER ProcNumber);
+//{
+//return GetMaximumProcessorCount(GroupNumber);
+//}
+
+
+///**********************************************************************
+// *           KeQueryMaximumGroupCount   (NTOSKRNL.EXE.@)
+// *
+// *
+// * RETURNS
+// *   the maximum number of processors
+// *
+// */
+//ULONG WINAPI KeQueryMaximumGroupCount()
+//{
+//
+//
+//
+//return KeQueryMaximumProcessorCountEx(0);
+//}
 
 /**********************************************************************
  *           KeQueryInterruptTime   (NTOSKRNL.EXE.@)

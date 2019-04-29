@@ -221,5 +221,8 @@ void      WINAPI RtlInitializeGenericTableAvl(PRTL_AVL_TABLE,PRTL_AVL_COMPARE_RO
 void      WINAPI RtlInsertElementGenericTableAvl(PRTL_AVL_TABLE,void *,ULONG,BOOL*);
 
 
-USHORT    WINAPI KeQueryMaximumGroupCount();
+USHORT    WINAPI KeQueryMaximumGroupCount(void);
+ULONG     WINAPI KeGetCurrentProcessorNumber(void);
+ULONG     WINAPI KeGetCurrentProcessorNumberEx(PPROCESSOR_NUMBER ProcNumber);
+USHORT    WINAPI KeQueryHighestNodeNumber(void);
 #endif

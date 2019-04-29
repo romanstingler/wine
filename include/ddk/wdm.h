@@ -1758,4 +1758,9 @@ static inline void ExInitializeFastMutex( FAST_MUTEX *mutex )
     KeInitializeEvent( &mutex->Event, SynchronizationEvent, FALSE );
 }
 
+NTSTATUS IoGetAffinityInterrupt(
+        PKINTERRUPT     InterruptObject,
+        PGROUP_AFFINITY GroupAffinity
+);
+
 #endif

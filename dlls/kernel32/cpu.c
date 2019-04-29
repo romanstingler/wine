@@ -330,18 +330,22 @@ DWORD WINAPI GetActiveProcessorCount(WORD group)
  */
 DWORD WINAPI GetMaximumProcessorCount(WORD group)
 {
-    SYSTEM_INFO si;
-    DWORD cpus;
+    DWORD maxProcessorGrpCnt = GetMaximumProcessorGroupCount();
 
-    GetSystemInfo( &si );
-    cpus = si.dwNumberOfProcessors;
-
-    FIXME("semi-stub, returning %u\n", cpus);
-    return cpus;
+    if (group && group != ALL_PROCESSOR_GROUPS && group <= maxProcessorGrpCnt){
+        return MAXIMUM_PROCESSORS;
+    }
+    else if(_WIN64 && group == ALL_PROCESSOR_GROUPS){
+        return MAXIMUM_PROCESSORS * maxProcessorGrpCnt;
+    }
+    return 0;
 }
 
 /***********************************************************************
  *           GetMaximumProcessorGroupCount (KERNEL32.@)
+ *
+ *    Returns the maximum number of processor groups that the system can have
+ *
  */
 DWORD WINAPI GetMaximumProcessorGroupCount()
 {
@@ -350,9 +354,9 @@ DWORD WINAPI GetMaximumProcessorGroupCount()
 
     GetSystemInfo( &si );
     cpus = si.dwNumberOfProcessors;
+    FIXME("semi-stub, returning %u\n", cpus);
 
-    FIXME("semi-stub, returning %u\n", ((cpus-1)/64) + 1);
-    return ((cpus-1)/64) + 1;
+    return cpus;
 }
 
 /***********************************************************************
